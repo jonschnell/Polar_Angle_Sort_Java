@@ -32,64 +32,82 @@ public class CompareSorters {
 	 * @param args
 	 **/
 	public static void main(String[] args) throws FileNotFoundException {
-		/*
-		 * // setup system scanner Scanner scanner = new Scanner(System.in);
-		 * 
-		 * System.out.println("Performances of Four Sorting Algorithms in Point S");
-		 * System.out.println("key: 1 (random integers) 2 (file input) 3"); // master
-		 * for loop allows for 99 trials for (int trial = 1; trial < 100; trial++) { //
-		 * keeps track of number of trials System.out.print("Trail " + trial + ":"); //
-		 * scans user selection int int selection = scanner.nextInt();
-		 * 
-		 * // selection 1 random if (selection == 1) {
-		 * System.out.print("Enter number of random points:"); int numPoints =
-		 * scanner.nextInt(); System.out.println("algorithm size time (ns)");
-		 * System.out.println("------------------------------");
-		 * 
-		 * // construct random number generator Random r = new Random(); Point[] arr =
-		 * generateRandomPoints(numPoints, r);
-		 * 
-		 * // construct RotationalPointScanner arry for each element
-		 * RotationalPointScanner[] scanners = new RotationalPointScanner[4]; // each
-		 * element is a different sort method scanners[0] = new
-		 * RotationalPointScanner(arr, Algorithm.SelectionSort); scanners[1] = new
-		 * RotationalPointScanner(arr, Algorithm.InsertionSort); scanners[2] = new
-		 * RotationalPointScanner(arr, Algorithm.MergeSort); scanners[3] = new
-		 * RotationalPointScanner(arr, Algorithm.QuickSort);
-		 * 
-		 * // scan draw and print stats for each sorting algorithm for (int i = 0; i <
-		 * 4; i++) { scanners[i].scan(); scanners[i].draw();
-		 * System.out.println(scanners[i].stats()); }
-		 * System.out.println("------------------------------"); }
-		 * 
-		 * // selection 2 file input else if (selection == 2) {
-		 * System.out.println("Points from a file"); System.out.print("File name: ");
-		 * String fileName = scanner.next();
-		 * System.out.println("algorithm size time (ns)");
-		 * System.out.println("------------------------------");
-		 * 
-		 * // construct RotationalPointScanner arry for each element
-		 * RotationalPointScanner[] scanners = new RotationalPointScanner[4]; // each
-		 * element is a different sort method scanners[0] = new
-		 * RotationalPointScanner(fileName, Algorithm.SelectionSort); scanners[1] = new
-		 * RotationalPointScanner(fileName, Algorithm.InsertionSort); scanners[2] = new
-		 * RotationalPointScanner(fileName, Algorithm.MergeSort); scanners[3] = new
-		 * RotationalPointScanner(fileName, Algorithm.QuickSort); // scan draw and print
-		 * stats for each sorting algorithm for (int i = 0; i < 4; i++) {
-		 * scanners[i].scan(); scanners[i].draw();
-		 * System.out.println(scanners[i].stats()); }
-		 * System.out.println("------------------------------");
-		 * 
-		 * }
-		 * 
-		 * // selection 3 exit program else if (selection == 3) { // close the scanner
-		 * scanner.close(); System.exit(0);
-		 * 
-		 * // invalid user input catch } else {
-		 * System.out.println("Error enter 1 for random, 2 for file, or 3 to exit."); }
-		 * 
-		 * }
-		 */
+
+		// setup system scanner
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.println("Performances of Four Sorting Algorithms in Point S");
+		System.out.println("key: 1 (random integers) 2 (file input) 3 (exit)");
+		// master for loop allows for 99 trials
+		for (int trial = 1; trial < 100; trial++) {
+			// keeps track of number of trials
+			System.out.print("Trail " + trial + ":");
+			// scans user selection int
+			int selection = scanner.nextInt();
+
+			// selection 1 random
+			if (selection == 1) {
+				System.out.print("Enter number of random points:");
+				int numPoints = scanner.nextInt();
+				System.out.println("algorithm size time (ns)");
+				System.out.println("------------------------------");
+
+				// construct random number generator
+				Random r = new Random();
+				Point[] arr = generateRandomPoints(numPoints, r);
+
+				// construct RotationalPointScanner arry for each element
+				RotationalPointScanner[] scanners = new RotationalPointScanner[4];
+				// each element is a different sort method
+				scanners[0] = new RotationalPointScanner(arr, Algorithm.SelectionSort);
+				scanners[1] = new RotationalPointScanner(arr, Algorithm.InsertionSort);
+				scanners[2] = new RotationalPointScanner(arr, Algorithm.MergeSort);
+				scanners[3] = new RotationalPointScanner(arr, Algorithm.QuickSort);
+
+				// scan draw and print stats for each sorting algorithm
+				for (int i = 0; i < 4; i++) {
+					scanners[i].scan();
+					scanners[i].draw();
+					System.out.println(scanners[i].stats());
+				}
+
+				System.out.println("------------------------------");
+			}
+
+			// selection 2 file input else
+			if (selection == 2) {
+				System.out.println("Points from a file");
+				System.out.print("File name: ");
+				String fileName = scanner.next();
+				System.out.println("algorithm size time (ns)");
+				System.out.println("------------------------------");
+
+				// construct RotationalPointScanner arry for each element
+				RotationalPointScanner[] scanners = new RotationalPointScanner[4];
+				// each element is a different sort method
+				scanners[0] = new RotationalPointScanner(fileName, Algorithm.SelectionSort);
+				scanners[1] = new RotationalPointScanner(fileName, Algorithm.InsertionSort);
+				scanners[2] = new RotationalPointScanner(fileName, Algorithm.MergeSort);
+				scanners[3] = new RotationalPointScanner(fileName, Algorithm.QuickSort);
+				// scan draw and print stats for each sorting algorithm
+				for (int i = 0; i < 4; i++) {
+					scanners[i].scan();
+					scanners[i].draw();
+					System.out.println(scanners[i].stats());
+				}
+				System.out.println("------------------------------");
+
+			}
+
+			// selection 3 exit program else
+			if (selection == 3) { // close the scanner
+			scanner.close();
+			System.exit(0);
+			}
+
+			// invalid user input catch } else {
+			System.out.println("Error enter 1 for random, 2 for file, or 3 to exit.");
+		}
 
 		// TEST CODE
 
@@ -102,6 +120,7 @@ public class CompareSorters {
 		 * 
 		 * Point[] arr2 = { pd, pb, pc, pa, pe, pf, pg, ph };
 		 */
+		/*
 		Point a = new Point(0, 0);
 		Point b = new Point(-3, -9);
 		Point c = new Point(0, -10);
@@ -137,6 +156,7 @@ public class CompareSorters {
 		for (int ave = 0; ave < 8; ave++) {
 			System.out.println(abs.points[ave].toString());
 		}
+		*/
 
 		// TODO
 		//
